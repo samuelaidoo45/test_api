@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', []);
-
 //patient
 Route::get('/patients', [PatientController::class, 'index']);
 Route::get('/patients/{patient}', [PatientController::class, 'show']);
@@ -59,19 +57,6 @@ Route::get('/medical-records', [MedicalRecordController::class, 'index']);
 Route::get('/medical-records/{medical_record}', [MedicalRecordController::class, 'show']);
 Route::post('/medical-records', [MedicalRecordController::class, 'store']);
 Route::put('/medical-records/{medical_record}', [MedicalRecordController::class, 'update']);
-
-//medical record xray options
-Route::get('/medical-record-xray-options', [MedicalRecordXrayOptionController::class, 'index']);
-Route::get('/medical-record-xray-options/{medical_record_xray_option}', [MedicalRecordXrayOptionController::class, 'show']);
-Route::post('/medical-record-xray-options', [MedicalRecordXrayOptionController::class, 'store']);
-Route::put('/medical-record-xray-options/{medical_record_xray_option}', [MedicalRecordXrayOptionController::class, 'update']);
-
-
-//medical record ultrasound options
-Route::get('/medical-record-ultrasound-options', [MedicalRecordUltrasoundOptionController::class, 'index']);
-Route::get('/medical-record-ultrasound-options/{medical_record_ultrasound_option}', [MedicalRecordUltrasoundOptionController::class, 'show']);
-Route::post('/medical-record-ultrasound-options', [MedicalRecordUltrasoundOptionController::class, 'store']);
-Route::put('/medical-record-ultrasound-options/{medical_record_ultrasound_option}', [MedicalRecordUltrasoundOptionController::class, 'update']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
