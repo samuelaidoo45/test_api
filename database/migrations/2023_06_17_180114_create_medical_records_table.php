@@ -15,6 +15,7 @@ class CreateMedicalRecordsTable extends Migration
     {
         Schema::create('medical_records', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('medical_record_id');
             $table->unsignedInteger('patient_id');
             $table->unsignedInteger('ctscan_id');
             $table->unsignedInteger('mri_id');

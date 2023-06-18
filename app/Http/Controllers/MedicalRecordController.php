@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MedicalRecord;
+use App\Models\MedicalRecordXrayOption;
+use App\Models\MedicalRecordUltrasoundOption;
 use Illuminate\Http\Request;
 
 class MedicalRecordController extends Controller
@@ -23,15 +26,59 @@ class MedicalRecordController extends Controller
     // create store function
     public function store(Request $request)
     {
+        // validate request
+        $request->validate([
+            'patient_id' => 'required',
+            'ctscan_id' => 'required',
+            'mri_id' => 'required',
+            'xrays' => 'required',
+            'ultrasounds' => 'required'
+        ]);
+
         // create new medical record
         $medical_record = new MedicalRecord;
+        $medical_record_xray_option = new MedicalRecordXrayOption;
+        $medical_record_ultrasound_option = new MedicalRecordUltrasoundOption;
 
         // set medical record id
         // generate unsigned big integer unique id
         $medical_record->medical_record_id = MedicalRecord::max('medical_record_id') + 1;
 
         // set medical record name
-        $medical_record->name = $request->name;
+        $medical_record->patient_id = $request->patient_id;
+        $medical_record->ctscan_id = $request->ctscan_id;
+        $medical_record->mri_id = $request->mri_id;
+
+        $xraysoptions = $request->xrays;
+        $ultrasoundsoptions = $request->ultrasounds;
+
+        // loop through xray options
+        foreach ($xraysoptions as $xraysoption) {
+            $xraysoption = (object) $xraysoption;
+            // set medical record id
+            $medical_record_xray_option->medical_record_id = $medical_record->medical_record_id;
+            // set xray id
+            $medical_record_xray_option->xray_option_name = $xraysoption->name;
+            $medical_record_xray_option->xray_option_id = $xraysoption->xray_id;
+
+            // save new medical record xray option
+            $medical_record_xray_option->save();
+        }
+
+
+        // loop through ultrasound options
+        foreach ($ultrasoundsoptions as $ultrasoundsoption) {
+            $ultrasoundsoption = (object) $ultrasoundsoption;
+            // set medical record id
+            $medical_record_ultrasound_option->medical_record_id = $medical_record->medical_record_id;
+            // set ultrasound id
+            $medical_record_ultrasound_option->ultrasound_option_name = $ultrasoundsoption->name;
+            $medical_record_ultrasound_option->ultrasound_option_id = $ultrasoundsoption->ultrasound_id;
+
+            // save new medical record ultrasound option
+            $medical_record_ultrasound_option->save();
+        }
+
 
         // save new medical record
         $medical_record->save();

@@ -25,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/lab-tests', [LabTestController::class, 'lab_test']);
 
 //patient
-Route::get('/patients', [PatientController::class, 'index']);
+//Route::get('/patients', [PatientController::class, 'index']);
 // Route::get('/patients/{patient}', [PatientController::class, 'show']);
-Route::post('/patients', [PatientController::class, 'store']);
+//Route::post('/patients', [PatientController::class, 'store']);
 // Route::put('/patients/{patient}', [PatientController::class, 'update']);
 
 //xray
