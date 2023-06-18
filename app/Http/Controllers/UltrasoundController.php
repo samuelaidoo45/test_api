@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ultrasound;
 use Illuminate\Http\Request;
 
 class UltrasoundController extends Controller

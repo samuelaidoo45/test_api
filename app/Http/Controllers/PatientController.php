@@ -65,13 +65,6 @@ class PatientController extends Controller
             'message' => 'patient deleted'
         ]);
     }
-
-    //create search function
-    public function search($name)
-    {
-        //search for patient
-        return Patient::where('name', 'like', '%'.$name.'%')->get();
-    }
     
 
 }

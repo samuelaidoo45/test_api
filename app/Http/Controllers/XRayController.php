@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\XRay;
 use Illuminate\Http\Request;
 
 class XRayController extends Controller
@@ -13,16 +14,15 @@ class XRayController extends Controller
         return XRay::all();
     }
 
-    // create show function
-    public function show(XRay $xray)
-    {
-        // return single xray
-        return $xray;
-    }
 
     // create store function
     public function store(Request $request)
     {
+        // validate request
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         // create new xray
         $xray = new XRay;
 

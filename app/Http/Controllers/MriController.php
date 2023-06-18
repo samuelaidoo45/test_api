@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mri;
 use Illuminate\Http\Request;
 
 class MriController extends Controller

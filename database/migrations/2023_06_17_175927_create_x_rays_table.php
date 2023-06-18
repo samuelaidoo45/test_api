@@ -18,7 +18,6 @@ class CreateXRaysTable extends Migration
             $table->id();
             $table->unsignedInteger('xray_id');
             $table->string('name');
-            $table->string('description');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ctscan;
 use Illuminate\Http\Request;
 
 class CtscanController extends Controller
