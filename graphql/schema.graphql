@@ -55,8 +55,11 @@ type MedicalRecord {
 }
 input StoreMedicalRecordInput {
   patient_id: ID!
+  patient_name: String!
   ctscan_id: ID!
+  ctscan_name: String!
   mri_id: ID!
+  mri_name: String!
   xrays: [XRayInput!]!
   ultrasounds: [UltrasoundInput!]!
 }

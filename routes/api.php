@@ -43,34 +43,23 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //xray
     Route::get('/x-rays', [XRayController::class, 'index']);
-    // Route::get('/x-rays/{xray}', [XRayController::class, 'show']);
     Route::post('/x-rays', [XRayController::class, 'store']);
-    // Route::put('/x-rays/{xray}', [XRayController::class, 'update']);
 
     //ultrasound
     Route::get('/ultrasounds', [UltrasoundController::class, 'index']);
-    // Route::get('/ultrasounds/{ultrasound}', [UltrasoundController::class, 'show']);
     Route::post('/ultrasounds', [UltrasoundController::class, 'store']);
-    // Route::put('/ultrasounds/{ultrasound}', [UltrasoundController::class, 'update']);
 
     //ctscan
     Route::get('/ctscans', [CtscanController::class, 'index']);
-    // Route::get('/ctscans/{ctscan}', [CtscanController::class, 'show']);
     Route::post('/ctscans', [CtscanController::class, 'store']);
-    // Route::put('/ctscans/{ctscan}', [CtscanController::class, 'update']);
 
     //mri
     Route::get('/mris', [MriController::class, 'index']);
-    // Route::get('/mris/{mri}', [MriController::class, 'show']);
     Route::post('/mris', [MriController::class, 'store']);
-    // Route::put('/mris/{mri}', [MriController::class, 'update']);
 
 
     //medical record
-    //Route::get('/medical-records', [MedicalRecordController::class, 'index']);
-    // Route::get('/medical-records/{medical_record}', [MedicalRecordController::class, 'show']);
     Route::post('/medical-records', [MedicalRecordController::class, 'store']);
-    // Route::put('/medical-records/{medical_record}', [MedicalRecordController::class, 'update']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\MedicalRecord;
 use App\Models\MedicalRecordXrayOption;
 use App\Models\MedicalRecordUltrasoundOption;
+use App\Mail\WelcomeEmail;
+use Illuminate\Support\Facades\Mail;
+
+
 
 
 final class StoreMedicalRecord
@@ -82,6 +86,9 @@ final class StoreMedicalRecord
         MedicalRecordUltrasoundOption::insert($medical_record_ultrasound_options);
 
         $medical_record->save();
+
+        Mail::to('samuelaidoo45@gmail.com')->send(new WelcomeEmail($request));
+
 
         //return response with status code and message
         return response()->json([
