@@ -10,6 +10,9 @@ use App\Http\Controllers\LabTestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TokenController;
+use App\GraphQL\Queries\LabTestQuery;
+
+
 
 
 /*
@@ -27,6 +30,7 @@ Route::post('/generate-token', [TokenController::class, 'generateToken']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
+
 
     //lab_test
     Route::get('/lab-tests', [LabTestController::class, 'lab_test']);
@@ -61,6 +65,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/mris', [MriController::class, 'store']);
     // Route::put('/mris/{mri}', [MriController::class, 'update']);
 
+
     //medical record
     //Route::get('/medical-records', [MedicalRecordController::class, 'index']);
     // Route::get('/medical-records/{medical_record}', [MedicalRecordController::class, 'show']);
@@ -71,3 +76,4 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+

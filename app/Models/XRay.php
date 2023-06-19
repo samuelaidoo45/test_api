@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class XRay extends Model
 {
     use HasFactory;
+
+    //fillable fields
+    protected $fillable = [
+        'xray_id',
+        'name',
+    ];
 }

@@ -1,0 +1,77 @@
+type Query {
+  LabTests: LabTests! @guard
+}
+
+type LabTests {
+  xrays: [XRay!]!@all
+  ultrasounds: [Ultrasound!]!@all
+  ctscans: [Ctscan!]!@all
+  mris: [Mri!]!@all
+}
+
+type XRay{
+  id: ID!
+  name: String!
+}
+
+type Ultrasound{
+  id: ID!
+  name: String!
+}
+
+type Ctscan{
+  id: ID!
+  name: String!
+}
+
+type Mri{
+  id: ID!
+  name: String!
+}
+
+
+type XRayOption {
+  id: ID!
+  name: String!
+  xrayId: ID!
+}
+
+type UltrasoundOption {
+  id: ID!
+  name: String!
+  ultrasoundId: ID!
+}
+
+type Mutation {
+  storeMedicalRecord(input: StoreMedicalRecordInput!): String  @guard
+}
+
+type MedicalRecord {
+  id: ID!
+  medical_record_id: Int!
+  patient_id: ID!
+  ctscan_id: ID!
+  mri_id: ID!
+}
+input StoreMedicalRecordInput {
+  patient_id: ID!
+  ctscan_id: ID!
+  mri_id: ID!
+  xrays: [XRayInput!]!
+  ultrasounds: [UltrasoundInput!]!
+}
+
+input XRayInput {
+  name: String!
+  xrayId: ID!
+}
+
+input UltrasoundInput {
+  name: String!
+  ultrasoundId: ID!
+}
+
+
+
+
+
