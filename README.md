@@ -1,64 +1,180 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# API Documentation
 
-## About Laravel
+This documentation provides an overview of the available endpoints in the API.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Authentication
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+To access the protected endpoints, you need to authenticate using the `generate-token` endpoint.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Generate Token
 
-## Learning Laravel
+- **URL**: `/generate-token`
+- **Method**: `POST`
+- **Description**: Generates an authentication token.
+- **Parameters**: None
+- **Returns**: The generated token.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Endpoints
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The following endpoints require authentication using the generated token.
 
-## Laravel Sponsors
+### Lab Test
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- **URL**: `/lab-tests`
+- **Method**: `GET`
+- **Description**: Retrieve all lab tests.
+- **Parameters**: None
+- **Returns**: A list of lab tests.
 
-### Premium Partners
+### X-Ray
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- **URL**: `/x-rays`
+- **Method**: `GET`
+- **Description**: Retrieve all X-rays.
+- **Parameters**: None
+- **Returns**: A list of X-rays.
 
-## Contributing
+- **URL**: `/x-rays`
+- **Method**: `POST`
+- **Description**: Create a new X-ray.
+- **Parameters**:
+  - `name` (string): The name of the X-ray.
+- **Returns**: The created X-ray.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Ultrasound
 
-## Code of Conduct
+- **URL**: `/ultrasounds`
+- **Method**: `GET`
+- **Description**: Retrieve all ultrasounds.
+- **Parameters**: None
+- **Returns**: A list of ultrasounds.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **URL**: `/ultrasounds`
+- **Method**: `POST`
+- **Description**: Create a new ultrasound.
+- **Parameters**:
+  - `name` (string): The name of the ultrasound.
+- **Returns**: The created ultrasound.
 
-## Security Vulnerabilities
+### CT Scan
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **URL**: `/ctscans`
+- **Method**: `GET`
+- **Description**: Retrieve all CT scans.
+- **Parameters**: None
+- **Returns**: A list of CT scans.
 
-## License
+- **URL**: `/ctscans`
+- **Method**: `POST`
+- **Description**: Create a new CT scan.
+- **Parameters**:
+  - `name` (string): The name of the CT scan.
+- **Returns**: The created CT scan.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### MRI
+
+- **URL**: `/mris`
+- **Method**: `GET`
+- **Description**: Retrieve all MRIs.
+- **Parameters**: None
+- **Returns**: A list of MRIs.
+
+- **URL**: `/mris`
+- **Method**: `POST`
+- **Description**: Create a new MRI.
+- **Parameters**:
+  - `name` (string): The name of the MRI.
+- **Returns**: The created MRI.
+
+### Medical Record
+
+- **URL**: `/medical-records`
+- **Method**: `POST`
+- **Description**: Create a new medical record.
+- **Parameters**:
+  - `patient_id` (integer): The ID of the patient.
+  - `patient_name` (string): The name of the patient.
+  - `mri_id` (integer): The ID of the MRI.
+  - `mri_name` (string): The name of the MRI.
+  - `ctscan_id` (integer): The ID of the CT scan.
+  - `ctscan_name` (string): The name of the CT scan.
+  - `xrays` (array): An array of X-rays.
+    - `xray_id` (integer): The ID of the X-ray.
+    - `name` (string): The name of the X-ray.
+  - `ultrasounds` (array): An array of ultrasounds.
+    - `ultrasound_id` (
+
+integer): The ID of the ultrasound.
+    - `name` (string): The name of the ultrasound.
+- **Returns**: The created medical record.
+
+Please note that authentication using the generated token is required for accessing the protected endpoints.
+
+# GraphQL API Documentation
+
+This documentation provides an overview of the available GraphQL mutations and queries in the API.
+
+## Mutations
+
+### Store Medical Record
+
+- **Description**: Creates a new medical record.
+- **Mutation**:
+graphql
+mutation {
+  storeMedicalRecord(medical_record: {
+    patient_id: 1,
+    patient_name: "Samuel Aidoo",
+    ctscan_id: 2,
+    ctscan_name: "Ctscan 1",
+    mri_id: 3,
+    mri_name: "Mri 1",
+    xrays: [
+      {
+        name: "XRay 1",
+        xray_id: 4
+      },
+      {
+        name: "XRay 2",
+        xray_id: 5
+      }
+    ],
+    ultrasounds: [
+      {
+        name: "Ultrasound 1",
+        ultrasound_id: 6
+      },
+      {
+        name: "Ultrasound 2",
+        ultrasound_id: 7
+      }
+    ]
+  }) 
+}
+
+## Queries
+
+### Lab Tests
+
+- **Description**: Retrieves information about lab tests, including their X-rays, ultrasounds, CT scans, and MRIs.
+- **Query**:
+graphql
+{
+  LabTests {
+    xrays {
+      name
+    }
+    ultrasounds {
+      name
+    }
+    ctscans {
+      name
+    }
+    mris {
+      name
+    }
+  }
+}
+
+
