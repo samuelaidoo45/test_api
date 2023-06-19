@@ -43,7 +43,7 @@ type UltrasoundOption {
 }
 
 type Mutation {
-  storeMedicalRecord(input: StoreMedicalRecordInput!): String  @guard
+  storeMedicalRecord(medical_record: StoreMedicalRecordInput!): String  @guard
 }
 
 type MedicalRecord {
@@ -63,12 +63,12 @@ input StoreMedicalRecordInput {
 
 input XRayInput {
   name: String!
-  xrayId: ID!
+  xray_id: ID!
 }
 
 input UltrasoundInput {
   name: String!
-  ultrasoundId: ID!
+  ultrasound_id: ID!
 }
 
 
